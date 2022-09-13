@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-ssl
@@ -7,26 +7,32 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt    
 spec:
   rules:
-  - host: sapp1.kubeoncloud.com
+  - host: sapp1.agarwalateetm365.com
     http:
       paths:
-      - path: /
+      - path: /app1
+        pathType: Prefix
         backend:
-          serviceName: app1-nginx-clusterip-service
-          servicePort: 80
-  - host: sapp2.kubeoncloud.com
+          service:
+            name: app1-nginx-clusterip-service
+            port:
+              number: 80
+  - host: sapp2.agarwalateetm365.com
     http:
       paths:
-      - path: /
+      - path: /app2
+        pathType: Prefix
         backend:
-          serviceName: app2-nginx-clusterip-service
-          servicePort: 80          
+          service:
+            name: app2-nginx-clusterip-service
+            port:
+              number: 80          
   tls:
   - hosts:
-    - sapp1.kubeoncloud.com
-    secretName: sapp1-kubeoncloud-secret           
+    - sapp1.agarwalateetm365.com
+    secretName: sapp1-agarwalateetm365-secret           
   - hosts:
-    - sapp2.kubeoncloud.com
-    secretName: sapp2-kubeoncloud-secret           
+    - sapp2.agarwalateetm365.com
+    secretName: sapp2-agarwalateetm365-secret           
 
           

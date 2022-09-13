@@ -21,10 +21,10 @@ helm repo update
 
 # Install the cert-manager Helm chart
 helm install \
-  cert-manager \
+  cert-manager jetstack/cert-manager \
   --namespace ingress-basic \
-  --version v0.13.0 \
-  jetstack/cert-manager
+  --version v1.8.2 \
+  --set installCRDs=true
 
 # Verify Cert Manager pods
 kubectl get pods --namespace ingress-basic

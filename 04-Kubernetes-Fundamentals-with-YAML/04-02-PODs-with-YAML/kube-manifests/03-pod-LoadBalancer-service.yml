@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: myapp-pod-loadbalancer-service
 spec:
-  type: LoadBalancer # ClusterIp, # NodePort
+  type: LoadBalancer # ClusterIp, NodePort
   selector:
     app: myapp
   ports: 

@@ -1,0 +1,31 @@
+person: # Dictionary
+  # Sample key value pairs
+  name: Ateet
+  age: 33
+  city: Jhansi
+  school: smc
+  hobbies: #List
+    - Cooking
+    - Cycling
+  Friends: # Multiple lists
+    - name: friend1
+      age: 31
+    - name: friend2
+      age: 33
+--- # Yaml document separator
+apiVersion: v1 # String
+kind: Pod  # String
+metadata: # Dictionary
+  name: myapp-pod
+  labels: # Dictionary 
+    app: myapp  
+    tier: frontend       
+spec:
+  containers: # List
+    - name: myapp
+      image: stacksimplify/kubenginx:1.0.0
+      ports:
+        - containerPort: 80
+          protocol: "TCP"
+        - containerPort: 81
+          protocol: "TCP"
