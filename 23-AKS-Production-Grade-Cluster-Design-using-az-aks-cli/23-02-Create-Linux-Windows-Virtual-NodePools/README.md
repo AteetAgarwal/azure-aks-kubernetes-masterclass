@@ -13,11 +13,11 @@
 echo ${AKS_CLUSTER}, ${AKS_VNET_SUBNET_VIRTUALNODES}
 
 # Enable Virtual Nodes on AKS Cluster
-az aks enable-addons \
-    --resource-group ${AKS_RESOURCE_GROUP} \
-    --name ${AKS_CLUSTER} \
-    --addons virtual-node \
-    --subnet-name ${AKS_VNET_SUBNET_VIRTUALNODES}
+az aks enable-addons `
+    --resource-group $AKS_RESOURCE_GROUP `
+    --name $AKS_CLUSTER `
+    --addons virtual-node `
+    --subnet-name $AKS_VNET_SUBNET_VIRTUALNODES
 
 # List Nodes
 kubectl get nodes   
@@ -78,25 +78,25 @@ Kalyans-Mac-mini:~ kalyanreddy$
 ### Step-03-01: Create Linux User Node Pool
 ```
 # Create New Linux Node Pool 
-az aks nodepool add --resource-group ${AKS_RESOURCE_GROUP} \
-                    --cluster-name ${AKS_CLUSTER} \
-                    --name linux101 \
-                    --node-count 1 \
-                    --enable-cluster-autoscaler \
-                    --max-count 5 \
-                    --min-count 1 \
-                    --mode User \
-                    --node-vm-size Standard_DS2_v2 \
-                    --os-type Linux \
-                    --labels nodepool-type=user environment=production nodepoolos=linux app=java-apps \
-                    --tags nodepool-type=user environment=production nodepoolos=linux app=java-apps \
-                    --zones {1,2,3}
+az aks nodepool add --resource-group $AKS_RESOURCE_GROUP `
+                    --cluster-name $AKS_CLUSTER `
+                    --name linux101 `
+                    --node-count 1 `
+                    --enable-cluster-autoscaler `
+                    --max-count 5 `
+                    --min-count 1 `
+                    --mode User `
+                    --node-vm-size Standard_D2ads_v5 `
+                    --os-type Linux `
+                    --labels nodepool-type=user environment=production nodepoolos=linux app=java-apps `
+                    --tags nodepool-type=user environment=production nodepoolos=linux app=java-apps `
+                    --zones 3
 
 ```
 ### Step-03-02: List Node Pools & Nodes
 ```
 # List Node Pools
-az aks nodepool list --cluster-name ${AKS_CLUSTER} --resource-group ${AKS_RESOURCE_GROUP} -o table
+az aks nodepool list --cluster-name $AKS_CLUSTER --resource-group $AKS_RESOURCE_GROUP -o table
 Note: Understand the mode System vs User
 
 # List Nodes using Labels
@@ -116,19 +116,19 @@ kubectl get nodes -o wide -l app=java-apps
 ### Step-04-01: Create Windows Node Pool
 ```
 # Create New Windows Node Pool 
-az aks nodepool add --resource-group ${AKS_RESOURCE_GROUP} \
-                    --cluster-name ${AKS_CLUSTER} \
-                    --os-type Windows \
-                    --name win101 \
-                    --node-count 1 \
-                    --enable-cluster-autoscaler \
-                    --max-count 5 \
-                    --min-count 1 \
-                    --mode User \
-                    --node-vm-size Standard_DS2_v2 \
-                    --labels environment=production nodepoolos=windows app=dotnet-apps nodepool-type=user \
-                    --tags environment=production nodepoolos=windows app=dotnet-apps nodepool-type=user \
-                    --zones {1,2,3}
+az aks nodepool add --resource-group $AKS_RESOURCE_GROUP `
+                    --cluster-name $AKS_CLUSTER `
+                    --os-type Windows `
+                    --name win101 `
+                    --node-count 1 `
+                    --enable-cluster-autoscaler `
+                    --max-count 5 `
+                    --min-count 1 `
+                    --mode User `
+                    --node-vm-size Standard_D2ads_v5 `
+                    --labels environment=production nodepoolos=windows app=dotnet-apps nodepool-type=user `
+                    --tags environment=production nodepoolos=windows app=dotnet-apps nodepool-type=user `
+                    --zones 3
 ```
 ### Step-04-02: List Node Pools & Nodes
 ```
