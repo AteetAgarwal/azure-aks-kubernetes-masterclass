@@ -206,7 +206,7 @@ The cluster is an MSI cluster, please manually grant Network Contributor role to
 - Make a note of **principalId** primarily
 ```
 # Get the MSI of our AKS cluster
-az aks show -g ${AKS_RESOURCE_GROUP} -n ${AKS_CLUSTER} --query "identity"
+az aks show -g $AKS_RESOURCE_GROUP -n $AKS_CLUSTER --query "identity"
 
 
 # Make a note of Info
@@ -218,7 +218,7 @@ az aks show -g ${AKS_RESOURCE_GROUP} -n ${AKS_CLUSTER} --query "identity"
 }
 
 # Get MSI Principal ID
-AKS_CLUSTER_MSI_PRINCIPALID=$(az aks show -g ${AKS_RESOURCE_GROUP} -n ${AKS_CLUSTER} --query "identity.principalId" -o tsv)
+$AKS_CLUSTER_MSI_PRINCIPALID=$(az aks show -g $AKS_RESOURCE_GROUP -n $AKS_CLUSTER --query "identity.principalId" -o tsv)
 echo $AKS_CLUSTER_MSI_PRINCIPALID
 ```
 
