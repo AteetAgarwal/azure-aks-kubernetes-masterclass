@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    type: readiness-probe-http
+  name: readiness-probe-http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: readiness-probe-http
+  template:
+    metadata:
+      labels:
+        type: readiness-probe-http
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
