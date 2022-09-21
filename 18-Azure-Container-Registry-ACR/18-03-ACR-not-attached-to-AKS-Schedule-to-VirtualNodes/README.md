@@ -52,7 +52,7 @@ docker stop acr-app3
 ### Build, Test Locally, Tag and Push to ACR
 ```
 # Export Command
-export ACR_REGISTRY=acrdemo2ss.azurecr.io
+export ACR_REGISTRY=acr2foraksprod1.azurecr.io
 export ACR_NAMESPACE=app3
 export ACR_IMAGE_NAME=acr-app3
 export ACR_IMAGE_TAG=v1
